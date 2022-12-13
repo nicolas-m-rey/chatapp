@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :rooms
+
+resources :rooms
 resources :users
+
+resources :rooms do
+  resources :messages
+end
+
+
 root 'rooms#index'
 
   get 'rooms/index'

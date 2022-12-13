@@ -1,6 +1,10 @@
 <div class="container">
+
   <h5> Hi <%= @current_user.username %> </h5>
+
 <h4> Users </h4>
+<%= turbo_stream_from "users" %>
+<div id="users">
 <ul>
   <% @users.each do |user| %>
     <li>
@@ -8,7 +12,11 @@
     </li>
   <% end %>
 </ul>
+</div>
+
 <h4> Rooms </h4>
+<%= turbo_stream_from "rooms" %>
+<div id="rooms">
 <ul>
   <% @rooms.each do |room| %>
     <li>
@@ -18,4 +26,13 @@
     </li>
   <% end %>
 </ul>
+</div>
+
+<%= turbo_stream_from @single_room %>
+<div id="messages">
+  <%= @messages.each do |message| %>
+  <%= room.name %>
+</div>
+<%= render partial: "layouts/new_room_form" %>
+
 </div>
